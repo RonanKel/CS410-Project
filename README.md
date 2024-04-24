@@ -10,10 +10,10 @@ This repository will be used for the CS410 Games Project.
 
 https://trello.com/b/daubi2YE/cs410-project
 
-Issue Number - Issue Title - Initial of who's working on it
+Issue Number - Issue Title
 
 ### Examples:
- - 4 - world rotation - RK
+ - 4 - world rotation
  - 1 - first meeting
 
 ## Development Workflow
@@ -27,7 +27,7 @@ Issue Number - Issue Title - Initial of who's working on it
 7. In order to not have crazy merge conflicts, when working in unity please work in your own build file.
      -  When implemenations pass testing they will be merged into the main build file.
 8. Once you have finished with your code changes, build the entire package and make sure existing and new unit tests are passing. This will ensure that we are not introducing any unknown errors.
-9. Push your code 'git push'   OR Push on Git Desktop. Since you're on a different branch your terminal will actually prompt you with another command that will look similar to this 'git push --set-upstream <branch_name>' use this.
+9. Push your code 'git push'   OR Push on Git Desktop. Since you're on a different branch your terminal will actually prompt you with another command that will look similar to this 'git push --set-upstream origin <branch_name>' use this.
 10. Navigate to the repo on github.
 11. You will now be prompted to create a pull-request, do this.
 12. For the description of the PR feel free to just link the trello issue/card you were working on and if possible explain how you have verified that your code changes work (i.e. a screenshot, passing unit tests, etc).
