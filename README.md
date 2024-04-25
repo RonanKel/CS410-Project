@@ -21,7 +21,7 @@ Issue Number - Issue Title
 2. Open a terminal and navigate to this repo.  OR Open this repository in Git Desktop
 3. Confirm you are on the main branch.
 4. Run the following command: 'git pull'  OR Fetch and Pull in Git Desktop
-5. Create a new branch and switch to it using the following command: 'git checkout -b <branch-name>'  OR Click on "Current Branch", click on "New branch", name it, then click "Create branch" 
+5. Create a new branch and switch to it using the following command: 'git checkout -b "branch-name"'  OR Click on "Current Branch", click on "New branch", name it, then click "Create branch" 
      -  Example branch-name fb-1, where fb stands for feature branch and 1 represents the issue/card you are working on in the trello board.
 6. Now that you're on your feature branch you can start working on your code changes!
 7. In order to not have crazy merge conflicts, when working in unity please work in your own build file.
