@@ -6,15 +6,23 @@ public class WorldRotationScript : MonoBehaviour
 {
     [SerializeField] Transform cameraTransform;
     [SerializeField] Transform playerTransform;
+    // The speed the player would like to rotate the playtform
     [SerializeField] float rotationSpeed;
-    private float forwardInput;
-    private float rightInput;
 
+    // These keep track of the players input
+    private float forwardInput;
+    private float horizontalInput;
+
+    // This is the rigidbody of the level
     Rigidbody rb;
 
+    // This is the rotation variable the ends up rotation the level
     Quaternion rotation;
+    // This is the axis that the level will rotate around to go forwards and backwards
+    Vector3 forwardRotationAxis;
+    // This is the axis that the level will rotate around to go right an left
+    Vector3 direction;
 
-    private Vector3 inputVector = Vector3.zero;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,32 +33,25 @@ public class WorldRotationScript : MonoBehaviour
     void Update()
     {
         // Player input
-        inputVector.x = Input.GetAxis("Horizontal");
-        inputVector.z = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal");
+        forwardInput = Input.GetAxis("Vertical");
 
         // Find the direction the player is "facing"
-        Vector3 direction = playerTransform.position - cameraTransform.position;
+        direction = playerTransform.position - cameraTransform.position;
         // Normalize it so the vector length is one
         direction.Normalize();
 
         // The rotational axis of the for "forward" rotation is the cross product between the vertical vector (0,1,0) and the direction the player is facing
-        Vector3 forwardRotationAxis = Vector3.Cross(direction, Vector3.up);
-        //float rotationAmount = Mathf.Atan2(inputVector.x, inputVector.z);
+        forwardRotationAxis = Vector3.Cross(direction, Vector3.up);
 
         // Rotate on the forward direction based on tilt speed and player input
-        rotation = Quaternion.AngleAxis(-inputVector.z * Time.deltaTime * rotationSpeed, forwardRotationAxis);
+        rotation = Quaternion.AngleAxis(-forwardInput * Time.deltaTime * rotationSpeed, forwardRotationAxis);
         // Rotate on the left/right direction based on tilt speed and player input
-        rotation *= Quaternion.AngleAxis(-inputVector.x * Time.deltaTime * rotationSpeed, direction);
+        rotation *= Quaternion.AngleAxis(-horizontalInput * Time.deltaTime * rotationSpeed, direction);
 
-        // change the rotation of the
+        // change the rotation of the level
+
         //transform.rotation *= rotation;
-
-        
         rb.MoveRotation(rb.rotation * rotation);
-
-
-        Debug.Log(rotation);
-
-        //Quaternion rotationQuaternion = new Quaternion(rotationVector.x * Time.deltaTime * rotationSpeed, 0f, -rotationVector.z * Time.deltaTime * rotationSpeed, 0f);        
     }
 }
