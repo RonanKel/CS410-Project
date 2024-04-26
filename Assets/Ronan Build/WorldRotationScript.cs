@@ -36,6 +36,8 @@ public class WorldRotationScript : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         forwardInput = Input.GetAxis("Vertical");
 
+    }
+    void FixedUpdate() {
         // Find the direction the player is "facing"
         direction = playerTransform.position - cameraTransform.position;
         // Normalize it so the vector length is one
@@ -45,13 +47,14 @@ public class WorldRotationScript : MonoBehaviour
         forwardRotationAxis = Vector3.Cross(direction, Vector3.up);
 
         // Rotate on the forward direction based on tilt speed and player input
-        rotation = Quaternion.AngleAxis(-forwardInput * Time.deltaTime * rotationSpeed, forwardRotationAxis);
+        rotation = Quaternion.AngleAxis(-forwardInput * rotationSpeed, forwardRotationAxis);
         // Rotate on the left/right direction based on tilt speed and player input
-        rotation *= Quaternion.AngleAxis(-horizontalInput * Time.deltaTime * rotationSpeed, direction);
+        rotation *= Quaternion.AngleAxis(-horizontalInput * rotationSpeed, direction);
 
         // change the rotation of the level
 
         //transform.rotation *= rotation;
         rb.MoveRotation(rb.rotation * rotation);
+
     }
 }
