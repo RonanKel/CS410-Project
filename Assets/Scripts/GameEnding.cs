@@ -25,11 +25,12 @@ public class GameEnding : MonoBehaviour
 
     }
 
-      void OnTriggerEnter (Collider other)
+    void OnTriggerEnter (Collider other)
     {
-        if (other.gameObject == player)
+        if (other.gameObject.CompareTag("Player"))
         {
-            timerActive = false;
+            StopTimer();
+            Debug.Log("You Win!!!");
         }
     }
 
@@ -39,7 +40,7 @@ public class GameEnding : MonoBehaviour
         if (timerActive == true) {
             currentTime = currentTime - Time.deltaTime; // Countdown
             if (currentTime <= 0) { // Once timer reaches 0 it will stop
-                timerActive = false;
+                StopTimer();
             }
         }
         TimeSpan time = TimeSpan.FromSeconds(currentTime);

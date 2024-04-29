@@ -68,7 +68,7 @@ public class WorldRotationScript : MonoBehaviour
             // change the rotation of the level
 
             rb.MoveRotation(rb.rotation * rotation);
-            Debug.Log("Regular rotation");
+            //Debug.Log("Regular rotation");
         }
     }
 }
