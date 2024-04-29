@@ -47,9 +47,11 @@ public class WorldRotationScript : MonoBehaviour
         forwardRotationAxis = Vector3.Cross(direction, Vector3.up);
 
         // Rotate on the forward direction based on tilt speed and player input
-        rotation = Quaternion.AngleAxis(-forwardInput * rotationSpeed, forwardRotationAxis);
+        transform.RotateAround(playerTransform.position, forwardRotationAxis, -forwardInput * rotationSpeed);
+        //rotation = Quaternion.AngleAxis(-forwardInput * rotationSpeed, forwardRotationAxis);
         // Rotate on the left/right direction based on tilt speed and player input
-        rotation *= Quaternion.AngleAxis(-horizontalInput * rotationSpeed, direction);
+        transform.RotateAround(playerTransform.position, direction, -horizontalInput * rotationSpeed);
+        //rotation *= Quaternion.AngleAxis(-horizontalInput * rotationSpeed, direction);
 
         // change the rotation of the level
 

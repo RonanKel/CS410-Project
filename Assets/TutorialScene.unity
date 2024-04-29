@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -447,8 +447,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 664490442}
-  - component: {fileID: 664490441}
   - component: {fileID: 664490443}
+  - component: {fileID: 664490444}
   m_Layer: 0
   m_Name: TutorialPlatform
   m_TagString: Tiltable
@@ -456,20 +456,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &664490441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 664490440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd921ddd0ba982a4f8d4c3c24ce98524, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tiltSpeed: 50
-  cameraTransform: {fileID: 963194228}
 --- !u!4 &664490442
 Transform:
   m_ObjectHideFlags: 0
@@ -526,6 +512,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &664490444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664490440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c76933a35d54b4a8f81145593014753e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 963194228}
+  playerTransform: {fileID: 1325462616}
+  rotationSpeed: 1
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
