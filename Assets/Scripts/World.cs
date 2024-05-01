@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorldRotationScript : MonoBehaviour
+public class World : MonoBehaviour
 {
     [SerializeField] Transform cameraTransform;
     [SerializeField] Transform playerTransform;
@@ -74,5 +74,18 @@ public class WorldRotationScript : MonoBehaviour
             rb.MoveRotation(rb.rotation * rotation);
             //Debug.Log("Regular rotation");
         }
+    }
+
+    public void SetWorldRotation(Quaternion rotation) {
+        /*
+        This will set the rotation of the world
+
+        Input:
+        Quaternion rotation: the rotation the world should be set to
+
+        Returns:
+        None.
+        */
+        transform.rotation = rotation;
     }
 }
