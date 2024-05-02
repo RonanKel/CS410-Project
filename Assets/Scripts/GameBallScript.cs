@@ -25,7 +25,7 @@ public class GameBallScript : MonoBehaviour
     void Update()
     {
         // Checks to see if the ball has fallen too far and will trigger the respawn
-        if (transform.position.y <= gameOverY) {
+        if (transform.position.y <= world.gameObject.transform.position.y + gameOverY) {
             Respawn();
         }
     }
