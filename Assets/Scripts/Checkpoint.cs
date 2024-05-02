@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    private bool collected = false;
     [SerializeField] bool isLevelCheckpoint = false;
 
     private Quaternion spawnRotation = new Quaternion(0f, 0f, 0f, 0f);
@@ -17,14 +16,12 @@ public class Checkpoint : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider col) {
-        if (!collected && col.transform.CompareTag("Player")) {
+        if (col.transform.CompareTag("Player")) {
             if (isLevelCheckpoint) {
                 col.transform.GetComponent<GameBallScript>().SetLevelCheckpoint(this);
-                collected = true;
             }
 
             col.transform.GetComponent<GameBallScript>().SetCurrentCheckpoint(this);
-            collected = true;
         }
     }
 
