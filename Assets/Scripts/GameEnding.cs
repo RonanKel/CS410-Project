@@ -41,6 +41,7 @@ public class GameEnding : MonoBehaviour
             currentTime = currentTime - Time.deltaTime; // Countdown
             if (currentTime <= 0) { // Once timer reaches 0 it will stop
                 StopTimer();
+                player.GetComponent<GameBallScript>().RestartLevel();
             }
         }
         TimeSpan time = TimeSpan.FromSeconds(currentTime);

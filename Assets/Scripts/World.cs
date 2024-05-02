@@ -7,7 +7,7 @@ public class World : MonoBehaviour
     [SerializeField] Transform cameraTransform;
     [SerializeField] Transform playerTransform;
     // The speed the player would like to rotate the playtform
-    [SerializeField] float rotationSpeed;
+    [SerializeField] float rotationSpeed = 1f;
 
     // These keep track of the players input
     private float forwardInput;
