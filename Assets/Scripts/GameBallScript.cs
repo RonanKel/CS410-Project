@@ -9,7 +9,8 @@ public class GameBallScript : MonoBehaviour
     // The world (This should be the script attached to the parent for the world
     [SerializeField] World world;
     // The place the ball will respawn, use a SpawnPoint prefab.
-    [SerializeField] SpawnPoint spawnPoint;
+    [SerializeField] Checkpoint levelCheckpoint;
+    [SerializeField] Checkpoint currentCheckpoint;
     // The balls rigidbody
     private Rigidbody rb;
 
@@ -29,16 +30,26 @@ public class GameBallScript : MonoBehaviour
         }
     }
 
+    public void RestartLevel() {
+        world.SetWorldRotation(levelCheckpoint.GetSpawnRotation());
+        transform.position = levelCheckpoint.GetSpawnPosition();
+        rb.velocity = Vector3.zero;
+    }
+
     public void Respawn() {
-        // Sets the position of the ball to its respawn point
-        transform.position = spawnPoint.spawnPosition;
-        // Sets the rotation of the world so the ball can nicely fall on the platform
-        world.SetWorldRotation(spawnPoint.spawnRotation);
         // Locks the position so it will fall straight down onto the platform
         LockHorizontalPosition();
+
+        // Sets the rotation of the world so the ball can nicely fall on the platform
+        world.SetWorldRotation(currentCheckpoint.GetSpawnRotation());
+
+        // Sets the position of the ball to its respawn point
+        transform.position = currentCheckpoint.GetSpawnPosition();
+
         // Unlocks the position after a delay
-        Invoke("UnlockHorizontalPosition", .2f);
+        Invoke("UnlockHorizontalPosition", .7f);
     }
+
 
     public void LockHorizontalPosition() {
         // THis will enable the X and Z axis position restraint placed on the ball
@@ -50,8 +61,14 @@ public class GameBallScript : MonoBehaviour
         rb.constraints = RigidbodyConstraints.None;
     }
 
-    public void SetSpawnPoint(SpawnPoint spawn) {
-        // Changes the balls spawnpoint
-        spawnPoint = spawn;
+    public void SetCurrentCheckpoint(Checkpoint spawn) {
+        // Changes the ball's last checkpoint
+        currentCheckpoint = spawn;
     }
+
+    public void SetLevelCheckpoint(Checkpoint spawn) {
+        // Changes the ball's level checkpoint (level switching)
+        levelCheckpoint = spawn;
+    }
+
 }
