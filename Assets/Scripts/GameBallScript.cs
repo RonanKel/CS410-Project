@@ -34,6 +34,7 @@ public class GameBallScript : MonoBehaviour
         world.SetWorldRotation(levelCheckpoint.GetSpawnRotation());
         transform.position = levelCheckpoint.GetSpawnPosition();
         rb.velocity = Vector3.zero;
+        currentCheckpoint = levelCheckpoint;
     }
 
     public void Respawn() {
