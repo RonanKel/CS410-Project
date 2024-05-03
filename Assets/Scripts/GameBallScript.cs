@@ -14,6 +14,11 @@ public class GameBallScript : MonoBehaviour
     // The balls rigidbody
     private Rigidbody rb;
 
+    void Awake()
+    {
+        world = GameObject.Find("World").GetComponent<World>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
