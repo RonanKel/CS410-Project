@@ -27,6 +27,12 @@ public class World : MonoBehaviour
     int layerMask = 1 << 3;
     RaycastHit hit;
 
+    void Awake() 
+    {
+        cameraTransform = GameObject.Find("Main Camera").transform;
+        playerTransform = GameObject.Find("GameBall").transform;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
