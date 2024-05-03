@@ -10,6 +10,11 @@ public class CameraFollowGB : MonoBehaviour
     private float currentY = 0.0f; // Current angle in Y-axis
     private float currentX = 0.0f; // Current angle in X-axis
 
+    void Awake()
+    {
+        target = GameObject.Find("GameBall").transform;
+    }
+    
     void Update()
     {
         if (target == null)
