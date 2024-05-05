@@ -61,7 +61,7 @@ public class World : MonoBehaviour
 
         // The rotational axis of the for "forward" rotation is the cross product between the vertical vector (0,1,0) and the direction the player is facing
         forwardRotationAxis = Vector3.Cross(direction, Vector3.up);
-
+        
 
         // Checks to see if the player is touching the floor, if they are then the world rotates around them, if not it has standard rotation
        if (Physics.Raycast(playerTransform.position, Vector3.down, out hit, .6f, ~layerMask)) {
