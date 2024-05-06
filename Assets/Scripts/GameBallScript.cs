@@ -24,6 +24,11 @@ public class GameBallScript : MonoBehaviour
     {
         // Finds the rigidbody component 
         rb = GetComponent<Rigidbody>();
+        if (currentCheckpoint) {
+            Debug.Log("THis");
+            Respawn();
+            rb.AddForce(Vector3.down * 1000f);
+        }
     }
 
     // Update is called once per frame
@@ -32,6 +37,14 @@ public class GameBallScript : MonoBehaviour
         // Checks to see if the ball has fallen too far and will trigger the respawn
         if (transform.position.y <= world.gameObject.transform.position.y + gameOverY) {
             Respawn();
+        }
+    }
+
+    void FixedUpdate() 
+    {
+        // This is to accounts for little movements that wouldn't usually alert or "wake up" the rigidbody to move
+        if (rb.IsSleeping()) {
+            rb.WakeUp();
         }
     }
 
