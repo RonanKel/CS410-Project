@@ -20,6 +20,8 @@ public class World : MonoBehaviour
     // This is the axis that the level will rotate around to go right an left
     Vector3 direction;
 
+    bool isRotatable = true;
+
     void Awake() 
     {
         cameraTransform = GameObject.Find("Main Camera").transform;
@@ -41,18 +43,20 @@ public class World : MonoBehaviour
     }
     void FixedUpdate() {
         
-        // Find the direction the player is "facing"
-        direction = playerTransform.position - cameraTransform.position;
-        // Normalize it so the vector length is one
-        direction.Normalize();
+        if (isRotatable) {
+            // Find the direction the player is "facing"
+            direction = playerTransform.position - cameraTransform.position;
+            // Normalize it so the vector length is one
+            direction.Normalize();
 
-        // The rotational axis of the for "forward" rotation is the cross product between the vertical vector (0,1,0) and the direction the player is facing
-        forwardRotationAxis = Vector3.Cross(direction, Vector3.up);
+            // The rotational axis of the for "forward" rotation is the cross product between the vertical vector (0,1,0) and the direction the player is facing
+            forwardRotationAxis = Vector3.Cross(direction, Vector3.up);
 
-        // Rotate on the forward direction based on tilt speed and player input around the player
-        transform.RotateAround(playerTransform.position, forwardRotationAxis, -forwardInput * rotationSpeed);
-        // Rotate on the left/right direction based on tilt speed and player input around the player
-        transform.RotateAround(playerTransform.position, direction, -horizontalInput * rotationSpeed);
+            // Rotate on the forward direction based on tilt speed and player input around the player
+            transform.RotateAround(playerTransform.position, forwardRotationAxis, -forwardInput * rotationSpeed);
+            // Rotate on the left/right direction based on tilt speed and player input around the player
+            transform.RotateAround(playerTransform.position, direction, -horizontalInput * rotationSpeed);
+        }
     }
 
     public void SetWorldRotation(Quaternion rotation) {
@@ -66,5 +70,9 @@ public class World : MonoBehaviour
         None.
         */
         transform.rotation = rotation;
+    }
+
+    public void SetRotationStatus(bool status) {
+        isRotatable = status;
     }
 }

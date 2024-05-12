@@ -10,6 +10,8 @@ public class CameraFollowGB : MonoBehaviour
     private float currentY = 0.0f; // Current angle in Y-axis
     private float currentX = 0.0f; // Current angle in X-axis
 
+    private bool isFollowing = true;
+
     void Awake()
     {
         target = GameObject.Find("GameBall").transform;
@@ -22,11 +24,13 @@ public class CameraFollowGB : MonoBehaviour
             return;
         }
 
-        // Update angles based on input
-        currentX += Input.GetAxis("Mouse X") * sensitivityX;
-        currentY -= Input.GetAxis("Mouse Y") * sensitivityY;
-        // Clamp the vertical angle to prevent flipping
-        currentY = Mathf.Clamp(currentY, -85, 85);
+        if (isFollowing) {
+            // Update angles based on input
+            currentX += Input.GetAxis("Mouse X") * sensitivityX;
+            currentY -= Input.GetAxis("Mouse Y") * sensitivityY;
+            // Clamp the vertical angle to prevent flipping
+            currentY = Mathf.Clamp(currentY, -85, 85);
+        }
     }
 
     void LateUpdate()
@@ -36,12 +40,18 @@ public class CameraFollowGB : MonoBehaviour
             return;
         }
 
-        // Calculate rotation and position based on current angles and the fixed distance
-        Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
-        Vector3 position = target.position - (rotation * Vector3.forward * distance);
+        if (isFollowing) {
+            // Calculate rotation and position based on current angles and the fixed distance
+            Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
+            Vector3 position = target.position - (rotation * Vector3.forward * distance);
 
-        // Update camera position and rotation
-        transform.position = position;
-        transform.LookAt(target);
+            // Update camera position and rotation
+            transform.position = position;
+            transform.LookAt(target);
+        }
+    }
+
+    public void SetFollowingStatus(bool status) {
+        isFollowing = status;
     }
 }
