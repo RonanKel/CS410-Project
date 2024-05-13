@@ -12,9 +12,8 @@ public class GameEnding : MonoBehaviour
     float currentTime;
     public int startMinutes;
     public TMP_Text currentTimeText;
-
-
-     public GameObject player;
+    public GameObject victoryScreen;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +30,7 @@ public class GameEnding : MonoBehaviour
         {
             StopTimer();
             Debug.Log("You Win!!!");
+            victoryScreen.SetActive(true);
         }
     }
 
