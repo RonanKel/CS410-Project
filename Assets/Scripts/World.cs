@@ -31,9 +31,7 @@ public class World : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Lock the cursor when the game is running
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        
 
         //playerTransform.position = new Vector3(0f, 4f, -5f);
         // Player input

@@ -15,12 +15,16 @@ public class GameEnding : MonoBehaviour
     public GameObject victoryScreen;
     public GameObject player;
 
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
         currentTime = startMinutes * 60; // Converting start time into seconds
         timerActive = true;
         Debug.Log("START!");
+
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
     }
 
@@ -31,6 +35,7 @@ public class GameEnding : MonoBehaviour
             StopTimer();
             Debug.Log("You Win!!!");
             victoryScreen.SetActive(true);
+            gameManager.UnhideMouse();
         }
     }
 
