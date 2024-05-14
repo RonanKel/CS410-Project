@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311742, g: 0.3807388, b: 0.35872483, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731176, g: 0.38073882, b: 0.35872492, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2950,10 +2950,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 282155585}
-    - target: {fileID: 4248467285262588006, guid: 2b25d7d09b41c455b86cee1a764a4102, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UnpauseGame
-      objectReference: {fileID: 0}
     - target: {fileID: 5722491530317329533, guid: 2b25d7d09b41c455b86cee1a764a4102, type: 3}
       propertyPath: m_Name
       value: Pause Menu
@@ -3042,26 +3038,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 282155585}
-    - target: {fileID: 6947579954277315398, guid: 2b25d7d09b41c455b86cee1a764a4102, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LevelSelect
-      objectReference: {fileID: 0}
     - target: {fileID: 8231015709340052055, guid: 2b25d7d09b41c455b86cee1a764a4102, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 282155585}
-    - target: {fileID: 8231015709340052055, guid: 2b25d7d09b41c455b86cee1a764a4102, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ExitGame
-      objectReference: {fileID: 0}
     - target: {fileID: 8265100521741316531, guid: 2b25d7d09b41c455b86cee1a764a4102, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 282155585}
-    - target: {fileID: 8265100521741316531, guid: 2b25d7d09b41c455b86cee1a764a4102, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RestartLevel
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
