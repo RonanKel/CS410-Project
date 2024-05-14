@@ -13,6 +13,7 @@ public class Timer : MonoBehaviour
     public TMP_Text currentTimeText;
 
     // Start is called before the first frame update
+    // Set the current time to the start time in seconds
     void Start()
     {
         currentTime = startMinutes * 60; // Converting start time into seconds
@@ -20,6 +21,7 @@ public class Timer : MonoBehaviour
     }
 
     // Update is called once per frame
+    // If the timer is active, decrease the current time and display it
     void Update()
     {
         if (timerActive == true) {
@@ -31,11 +33,11 @@ public class Timer : MonoBehaviour
         TimeSpan time = TimeSpan.FromSeconds(currentTime);
         currentTimeText.text = "Timer: " + time.ToString(@"mm\:ss");
     }
-
+    // Start the timer
     public void StartTimer(){
         timerActive = true;
     }
-
+    // Stop the timer
     public void StopTimer() {
         timerActive = false;
     }

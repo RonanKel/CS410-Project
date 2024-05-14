@@ -20,6 +20,7 @@ public class DropPlatform : MonoBehaviour
     private bool isRotating = false;
 
     // Start is called before the first frame update
+    // Find the camera and world objects
     void Start()
     {
         dropMaterial.color = startingColor;
@@ -28,6 +29,7 @@ public class DropPlatform : MonoBehaviour
     }
 
     // Update is called once per frame
+    // If the timer is ticking, increase the timer and change the color of the platform
     void Update()
     {
         if (isTicking)
@@ -47,6 +49,7 @@ public class DropPlatform : MonoBehaviour
         }
     }
 
+    // Drop the platform
     void Drop()
     {
         EndTimer();
@@ -57,7 +60,7 @@ public class DropPlatform : MonoBehaviour
         ball.SetParent(transform);
         RotatePlatform();
     }
-
+    // End the timer
     void EndTimer()
     {
         isTicking = false;
@@ -66,12 +69,12 @@ public class DropPlatform : MonoBehaviour
         dropMaterial.color = Color.Lerp(startingColor, selectedColor, timer / 3f);
 
     }
-
+    // Start the timer
     void StartTimer()
     {
         isTicking = true;
     }
-
+    // If the player enters the trigger, set the ball to the player and start the timer
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.CompareTag("Player"))
@@ -80,7 +83,7 @@ public class DropPlatform : MonoBehaviour
             StartTimer();
         }
     }
-
+    // If the player exits the trigger, end the timer
     void OnTriggerExit(Collider col)
     {
         if (col.gameObject.CompareTag("Player"))
@@ -88,7 +91,7 @@ public class DropPlatform : MonoBehaviour
             EndTimer();
         }
     }
-
+    // Rotate the platform
     void RotatePlatform()
     {
         if (!isRotating) // Check if rotation is not already in progress
@@ -96,7 +99,7 @@ public class DropPlatform : MonoBehaviour
             StartCoroutine(RotateCoroutine());
         }
     }
-
+    // Coroutine to rotate the platform
     IEnumerator RotateCoroutine()
     {
         isRotating = true;

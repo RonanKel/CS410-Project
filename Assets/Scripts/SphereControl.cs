@@ -8,7 +8,8 @@ public class SphereControl : MonoBehaviour
     public Transform cameraTransform; // Reference to the camera transform
 
     private Rigidbody rb;
-
+    // Start is called before the first frame update
+    // Find the rigidbody and camera transform
     void Start()
     {
         rb = GetComponent<Rigidbody>();

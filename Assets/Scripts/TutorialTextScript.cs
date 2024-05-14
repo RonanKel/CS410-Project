@@ -17,6 +17,7 @@ public class TutorialTextScript : MonoBehaviour
 
     bool isFading = false;
     // Start is called before the first frame update
+    // Set the start time and get the text component
     void Awake()
     {
         startTime = Time.time;
@@ -24,6 +25,7 @@ public class TutorialTextScript : MonoBehaviour
     }
 
     // Update is called once per frame
+    // If the start time is 2 seconds before the current time, start the fade
     void Update()
     {
         if (startTime + 2f < Time.time && !isFading) {
@@ -37,12 +39,16 @@ public class TutorialTextScript : MonoBehaviour
         }
     }
 
+    // Start the fade
     void StartFade() {
         startFadeTime = Time.time;
         isFading = true;
         Debug.Log("StartFade");
     }
 
+    // Reset the text
+    // Set the text color to the original color
+    // Set the start time and start fade time to 0
     void Reset() {
         text.color = textColor;
         startTime = 0f;
