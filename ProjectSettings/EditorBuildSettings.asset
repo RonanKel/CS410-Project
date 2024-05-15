@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RonanScene.unity
     guid: 1bb49b6b8614c4c768225a6500854bf1
+  - enabled: 1
+    path: Assets/Scenes/MaxScene.unity
+    guid: ae10986a9d557b44d9eeb04df3349031
   m_configObjects: {}
