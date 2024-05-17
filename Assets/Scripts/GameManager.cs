@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     GameObject pauseMenu;
+    GameObject scoreboard;
     // Start is called before the first frame update
 
     void Awake()
     {
         pauseMenu = GameObject.Find("Pause Menu") ? GameObject.Find("Pause Menu") : null;
+        scoreboard = GameObject.Find("Scoreboard") ? GameObject.Find("Scoreboard") : null;
 
         // Lock the cursor when the game is running
         Cursor.lockState = CursorLockMode.Locked;
@@ -36,12 +38,18 @@ public class GameManager : MonoBehaviour
     public void PauseGame() {
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
+        if (scoreboard != null) {
+            scoreboard.SetActive(true);
+        }
         // Lock the cursor when the game is running
         UnhideMouse();
     }
 
     public void UnpauseGame() {
         pauseMenu.SetActive(false);
+        if (scoreboard != null) {
+            scoreboard.SetActive(false);
+        }
         ReturnToGame();
     }
 

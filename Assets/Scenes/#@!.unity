@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.49410856, g: 0.6333019, b: 0.7215666, a: 1}
+  m_IndirectSpecularColor: {r: 0.4945485, g: 0.63333374, b: 0.7208579, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2263,6 +2263,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 2474937299084481644, guid: d5814003fd69f4e9d89777591cc0234d, type: 3}
+      propertyPath: distance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3863938140063562137, guid: d5814003fd69f4e9d89777591cc0234d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2301,6 +2305,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3863938140063562137, guid: d5814003fd69f4e9d89777591cc0234d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6071337693795434157, guid: d5814003fd69f4e9d89777591cc0234d, type: 3}
+      propertyPath: orthographic
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

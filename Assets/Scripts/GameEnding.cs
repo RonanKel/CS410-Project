@@ -14,6 +14,7 @@ public class GameEnding : MonoBehaviour
     public TMP_Text currentTimeText;
     public GameObject victoryScreen;
     public GameObject player;
+    public GameObject scoreboard;
 
     private GameManager gameManager;
 
@@ -35,7 +36,10 @@ public class GameEnding : MonoBehaviour
             StopTimer();
             Debug.Log("You Win!!!");
             victoryScreen.SetActive(true);
+            scoreboard.GetComponent<Scoreboard>().SaveScore(((startMinutes * 60f) - currentTime));
+            scoreboard.SetActive(true);
             gameManager.UnhideMouse();
+            
         }
     }
 
