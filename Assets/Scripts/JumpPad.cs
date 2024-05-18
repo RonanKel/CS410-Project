@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class JumpPad : MonoBehaviour
+{
+    // Start is called before the first frame update
+   [SerializeField] float jumpAmount = 30f;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // if other collider is the player then do something
+        if(other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Ball hit bumper");
+            // get the players rigidbody
+            Rigidbody playerRB = other.gameObject.GetComponent<Rigidbody>();
+             //if we gound a rigid body, apply the force
+             if(playerRB != null)
+             {
+                Debug.Log("Player RB found");
+                //apply vetical velocity force
+                playerRB.velocity = new Vector3(0,jumpAmount,0);
+             }
+
+        }
+    }
+}
