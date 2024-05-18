@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
  
-public class RollingSound : MonoBehaviour
+public class RollingSoundOld : MonoBehaviour
 {
     public Rigidbody rb;
     public AudioSource audio;
+    public AudioClip thud;
+    public AudioClip rolling;
  
-    public float maxSpeed = 3.7f;
+    public float maxSpeed = 10.7f;
     public AnimationCurve volumeCurve;
     public AnimationCurve pitchCurve;
     public bool grounded;
@@ -30,6 +32,7 @@ public class RollingSound : MonoBehaviour
                 audio.Play();
                 Debug.Log("Played");
             }
+        }
 
         else
         {
@@ -48,17 +51,20 @@ public class RollingSound : MonoBehaviour
  
         // set pitch based on pitch curve
         audio.pitch = pitchCurve.Evaluate(scaledVelocity);
-        } 
+        
         
     }
 
-       void OnCollisionStay(Collision collisionInfo)
+       void OnCollisionStay(Collision theCollision)
     {
-        // Debug-draw all contact points and normals
-        foreach (ContactPoint contact in collisionInfo.contacts)
-        {
-            Debug.DrawRay(contact.point, contact.normal * 10, Color.white);
-        }
+        // if(theCollision.relativeVelocity.magnitude >= 5)
+        // {
+        //     audio.PlayOneShot(thud);
+        // }
+        //   if(theCollision.gameObject.CompareTag("Tiltable"))
+        // {
+            grounded = true;
+        // }
     }
 
     void OnCollisionEnter(Collision theCollision)
@@ -68,6 +74,12 @@ public class RollingSound : MonoBehaviour
            grounded = true;
           // Debug.Log("grounded" + grounded);
         }
+        //   if(theCollision.relativeVelocity.magnitude >= 5)
+        // {
+        //     audio.PlayOneShot(thud);
+        // }
+        
+      
     }
 
     void OnCollisionExit(Collision theCollision)
