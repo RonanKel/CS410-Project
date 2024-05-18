@@ -13,16 +13,16 @@ public class Bumper : MonoBehaviour
         // if other collider is the player then do something
         if(other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Ball hit bumper");
+            //Debug.Log("Ball hit bumper");
             // get the players rigidbody
             Rigidbody playerRB = other.gameObject.GetComponent<Rigidbody>();
              //if we gound a rigid body, apply the force
              if(playerRB != null)
              {
-                Debug.Log("Player RB found");
+                //Debug.Log("Player RB found");
                 //get the player's velocity and invert it
                 Vector3 bounceDirection = -playerRB.velocity;
-                Debug.Log("Bounce Direction: " + bounceDirection * bounceAmount);
+                //Debug.Log("Bounce Direction: " + bounceDirection * bounceAmount);
                 //apply this force
                 playerRB.AddForce(bounceDirection * bounceAmount);
 
