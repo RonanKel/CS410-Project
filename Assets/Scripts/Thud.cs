@@ -11,10 +11,11 @@ public class Thud : MonoBehaviour
     {
         if(hit.relativeVelocity.magnitude >= 1)
         {
-            float intensityRatio = hit.relativeVelocity.magnitude / 500f;
+            float intensityRatio = hit.relativeVelocity.magnitude / 100f;
+            Debug.Log(hit.relativeVelocity.magnitude);
             sound1.volume = Mathf.Lerp(0f, .4f, intensityRatio);
-            sound2.volume = Mathf.Lerp(0f, 1f, intensityRatio); 
-            sound1.pitch = Mathf.Lerp(2f, 1.7f, intensityRatio);
+            sound2.volume = Mathf.Lerp(0f, .2f, intensityRatio); 
+            sound1.pitch = Mathf.Lerp(1.8f, 1f, intensityRatio);
             sound2.pitch = Mathf.Lerp(2.5f, 2f, intensityRatio);
             sound1.Play();
             sound2.Play();

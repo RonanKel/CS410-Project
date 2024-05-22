@@ -25,23 +25,23 @@ public class RollingSoundOld : MonoBehaviour
       
 
         if(isRolling && grounded){
-            Debug.Log("is Rolling and Grounded");
-            Debug.Log(rb.velocity.magnitude);
+            //Debug.Log("is Rolling and Grounded");
+            //Debug.Log(rb.velocity.magnitude);
             if(!audio.isPlaying)
             {
                 audio.Play();
-                Debug.Log("Played");
+                //Debug.Log("Played");
             }
         }
 
         else
         {
             audio.Pause();
-            Debug.Log("Paused");
+            //Debug.Log("Paused");
         }
 
         var speed = rb.velocity.magnitude;
-        Debug.Log("speed= " + speed);
+        //Debug.Log("speed= " + speed);
  
         // normalize speed into 0-1
         var scaledVelocity = Remap(Mathf.Clamp(speed, 0, maxSpeed), 0, maxSpeed, 0, 1);
