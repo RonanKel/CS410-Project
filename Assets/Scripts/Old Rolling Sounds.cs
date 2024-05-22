@@ -71,7 +71,7 @@ public class RollingSoundOld : MonoBehaviour
     {
         if(theCollision.gameObject.CompareTag("Tiltable"))
         {
-           grounded = true;
+           //grounded = true;
           // Debug.Log("grounded" + grounded);
         }
         //   if(theCollision.relativeVelocity.magnitude >= 5)
