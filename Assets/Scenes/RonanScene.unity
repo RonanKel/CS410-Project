@@ -545,6 +545,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 7e0086884881343469a6c04a70b681e3, type: 2}
     - target: {fileID: 3407542227384131511, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
+      propertyPath: ps
+      value: 
+      objectReference: {fileID: 1004441289}
+    - target: {fileID: 3407542227384131511, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
       propertyPath: stuff
       value: 0.15
       objectReference: {fileID: 0}
@@ -610,12 +614,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7898429388804187542, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1004441287}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
 --- !u!1 &132586635 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5604304815126394847, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
+  m_PrefabInstance: {fileID: 132586634}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &132586641 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7898429388804187542, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
   m_PrefabInstance: {fileID: 132586634}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &150142155
@@ -4199,11 +4211,11 @@ Transform:
   m_GameObject: {fileID: 1004441286}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 30, z: -15.5}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: -0.3600006}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 132586641}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &1004441288
 ParticleSystemRenderer:
@@ -13369,6 +13381,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6468347806563044083, guid: 0d23de80f62c5434f813b6627a8e4521, type: 3}
+      propertyPath: scoreCards.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7011451437016608791, guid: 0d23de80f62c5434f813b6627a8e4521, type: 3}
       propertyPath: m_Name
       value: Scoreboard
@@ -13394,4 +13410,3 @@ SceneRoots:
   - {fileID: 1680020492}
   - {fileID: 4201180227210743056}
   - {fileID: 8691471982774711391}
-  - {fileID: 1004441287}

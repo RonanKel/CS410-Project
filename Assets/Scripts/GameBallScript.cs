@@ -14,9 +14,10 @@ public class GameBallScript : MonoBehaviour
     // The balls rigidbody
     private Rigidbody rb;
 
-    [SerializeField] ParticleSystem particleSystem;
 
-    [SerializeField] float stuff = .2f;
+
+    // Particle system stuff
+    [SerializeField] ParticleSystem ps;
 
     void Awake()
     {
@@ -42,6 +43,7 @@ public class GameBallScript : MonoBehaviour
         if (transform.position.y <= world.gameObject.transform.position.y + gameOverY) {
             Respawn();
         }
+
     }
 
     void FixedUpdate() 
@@ -94,45 +96,52 @@ public class GameBallScript : MonoBehaviour
         levelCheckpoint = spawn;
     }
 
-    public void OnCollisionEnter(Collision col) {
+    private void SetParticleSpawner(Collision col, float collisionSpeed, ParticleSystem particleSystem, float intensityScalar) {
+        // The point of contact 
+        Vector3 contactPoint = col.GetContact(col.contactCount-1).point;
+        // The position of the gameball
+        Vector3 currPosition = transform.position;
+        // The direction the particles should be facing
+        Vector3 direction = Vector3.Normalize(currPosition - contactPoint);
 
-        if (!col.gameObject.CompareTag("Player") && !col.gameObject.CompareTag("Checkpoint") && particleSystem) {
+        // Make the particle system look in the right direction
+        particleSystem.transform.LookAt(particleSystem.transform.position + direction);
+        // Change the position to the right place
+        particleSystem.transform.position = Vector3.Lerp(contactPoint, contactPoint + direction, .15f);
 
-            //Debug.Log("hit");
-            Vector3 contactPoint = col.GetContact(col.contactCount-1).point;
-            Vector3 currPosition = particleSystem.transform.position;
+        float intensityRatio = (collisionSpeed * intensityScalar) / 100f;
 
-            
-            if (col.relativeVelocity.magnitude > 1f) {
-                Vector3 direction = Vector3.Normalize(currPosition - contactPoint);
-                //Debug.Log(direction);
-                particleSystem.transform.LookAt(particleSystem.transform.position + direction);
-                particleSystem.transform.position = Vector3.Lerp(contactPoint, contactPoint + direction, stuff);
-                particleSystem.Play();
+        // Set the speed and size of the particles
+        var mainModule = particleSystem.main;
+        mainModule.startSpeed = new ParticleSystem.MinMaxCurve(Mathf.Lerp(0f, 12f, intensityRatio), Mathf.Lerp(0f, 30f, intensityRatio));
+        mainModule.startSize = new ParticleSystem.MinMaxCurve(Mathf.Lerp(.01f, 1.5f, intensityRatio), Mathf.Lerp(.1f, .175f, intensityRatio));
 
-                // Set the speed and size of the particles
-                var mainModule = particleSystem.main;
-                mainModule.startSpeed = new ParticleSystem.MinMaxCurve(Mathf.Lerp(2f, 7f, col.relativeVelocity.magnitude / 100f), Mathf.Lerp(5f, 20f, col.relativeVelocity.magnitude / 100f));
-                mainModule.startSize = new ParticleSystem.MinMaxCurve(Mathf.Lerp(.05f, 1f, col.relativeVelocity.magnitude / 100f), Mathf.Lerp(.1f, 2f, col.relativeVelocity.magnitude / 100f));
+        // Set the amount of particles to be made
+        var emissionModule = particleSystem.emission;
+        ParticleSystem.Burst burst = emissionModule.GetBurst(0);
+        burst.count = (int) Mathf.Lerp(0, 100f, intensityRatio);
+        emissionModule.SetBurst(0, burst);
 
-                // Set the amount to be made
-                var emissionModule = particleSystem.emission;
-                ParticleSystem.Burst burst = emissionModule.GetBurst(0);
-                burst.count = (int) Mathf.Lerp(20f, 100f, col.relativeVelocity.magnitude / 100f);
-                emissionModule.SetBurst(0, burst);
+        // Play the effect!
+        particleSystem.Play();
+        
+    }
 
-                // Set the size of the particles
+    void OnCollisionEnter(Collision col) {
 
-
-                
-
-                
-
-
-               
-
-                //particleSystem.main.startSpeed = Mathf.Lerp(2f, 10f, col.relativeVelocity.magnitude / 100f);
+        if (!col.gameObject.CompareTag("Player") && !col.gameObject.CompareTag("Checkpoint") && ps) {
+            float collisionSpeed = col.relativeVelocity.magnitude;
+            if (collisionSpeed > 1f) {
+                SetParticleSpawner(col, collisionSpeed, ps, 1f);
             }
+        }
+    }
+
+    void OnCollisionStay(Collision col) {
+        if (!col.gameObject.CompareTag("Player") && !col.gameObject.CompareTag("Checkpoint") && ps) {
+            float collisionSpeed = col.relativeVelocity.magnitude;
+            if (collisionSpeed > 0f)
+            SetParticleSpawner(col, collisionSpeed, ps, .25f);
         }
     }
 
