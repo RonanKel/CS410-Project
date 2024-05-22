@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class Thud : MonoBehaviour
 {
-    public AudioClip impact;
+    public AudioSource sound1;
+    public AudioSource sound2;
 
-    void OnCollisionEnter (Collision hit)
+    void OnCollisionEnter(Collision hit)
     {
-        if(hit.relativeVelocity.magnitude >=5)
+        if(hit.relativeVelocity.magnitude >= 1)
         {
-            GetComponent<AudioSource>().PlayOneShot(impact);
+            float intensityRatio = hit.relativeVelocity.magnitude / 500f;
+            sound1.volume = Mathf.Lerp(0f, .4f, intensityRatio);
+            sound2.volume = Mathf.Lerp(0f, 1f, intensityRatio); 
+            sound1.pitch = Mathf.Lerp(2f, 1.7f, intensityRatio);
+            sound2.pitch = Mathf.Lerp(2.5f, 2f, intensityRatio);
+            sound1.Play();
+            sound2.Play();
         }
     } 
 
