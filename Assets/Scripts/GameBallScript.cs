@@ -14,6 +14,10 @@ public class GameBallScript : MonoBehaviour
     // The balls rigidbody
     private Rigidbody rb;
 
+    [SerializeField] ParticleSystem particleSystem;
+
+    [SerializeField] float stuff = .2f;
+
     void Awake()
     {
         world = GameObject.Find("World").GetComponent<World>();
@@ -88,6 +92,48 @@ public class GameBallScript : MonoBehaviour
     public void SetLevelCheckpoint(Checkpoint spawn) {
         // Changes the ball's level checkpoint (level switching)
         levelCheckpoint = spawn;
+    }
+
+    public void OnCollisionEnter(Collision col) {
+
+        if (!col.gameObject.CompareTag("Player") && !col.gameObject.CompareTag("Checkpoint") && particleSystem) {
+
+            //Debug.Log("hit");
+            Vector3 contactPoint = col.GetContact(col.contactCount-1).point;
+            Vector3 currPosition = particleSystem.transform.position;
+
+            
+            if (col.relativeVelocity.magnitude > 1f) {
+                Vector3 direction = Vector3.Normalize(currPosition - contactPoint);
+                //Debug.Log(direction);
+                particleSystem.transform.LookAt(particleSystem.transform.position + direction);
+                particleSystem.transform.position = Vector3.Lerp(contactPoint, contactPoint + direction, stuff);
+                particleSystem.Play();
+
+                // Set the speed and size of the particles
+                var mainModule = particleSystem.main;
+                mainModule.startSpeed = new ParticleSystem.MinMaxCurve(Mathf.Lerp(2f, 7f, col.relativeVelocity.magnitude / 100f), Mathf.Lerp(5f, 20f, col.relativeVelocity.magnitude / 100f));
+                mainModule.startSize = new ParticleSystem.MinMaxCurve(Mathf.Lerp(.05f, 1f, col.relativeVelocity.magnitude / 100f), Mathf.Lerp(.1f, 2f, col.relativeVelocity.magnitude / 100f));
+
+                // Set the amount to be made
+                var emissionModule = particleSystem.emission;
+                ParticleSystem.Burst burst = emissionModule.GetBurst(0);
+                burst.count = (int) Mathf.Lerp(20f, 100f, col.relativeVelocity.magnitude / 100f);
+                emissionModule.SetBurst(0, burst);
+
+                // Set the size of the particles
+
+
+                
+
+                
+
+
+               
+
+                //particleSystem.main.startSpeed = Mathf.Lerp(2f, 10f, col.relativeVelocity.magnitude / 100f);
+            }
+        }
     }
 
 }
