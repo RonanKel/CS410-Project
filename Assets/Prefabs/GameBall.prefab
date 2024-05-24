@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 2836407496028957567}
   - component: {fileID: 3407542227384131511}
   - component: {fileID: 5952084477401850361}
-  - component: {fileID: 4498934882264148701}
   - component: {fileID: 7387384831184887517}
   m_Layer: 6
   m_Name: GameBall
@@ -165,10 +164,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f1fa2b1f728e44d79ad613abc6178777, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 97d309a75199446f0b24f1d700aabbaf, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 0
+  m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -241,7 +240,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1.091
+      value: 0.342
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -251,73 +250,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4498934882264148701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5604304815126394847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be22eeb7256324f6085611fa91a09e36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 2836407496028957567}
-  audio: {fileID: 5952084477401850361}
-  thud: {fileID: 0}
-  rolling: {fileID: 0}
-  maxSpeed: 3.7
-  volumeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.33085632
-      value: 0.00491333
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.9929657
-      value: 0.5043793
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  pitchCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  grounded: 0
-  onStay: 0
 --- !u!114 &7387384831184887517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,8 +262,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e528142a36c34a57959d3b86309243e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound1: {fileID: 8901996033364824864}
-  sound2: {fileID: 7828296826030201911}
+  collisionSound1: {fileID: 8901996033364824864}
+  collisionSound2: {fileID: 7828296826030201911}
+  rollingSound: {fileID: 5952084477401850361}
+  radius: 0.5001
+  maxSpeed: 10.7
+  volumeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.08062458
+      value: 0.00030517578
+      inSlope: -0.0009889771
+      outSlope: -0.0009889771
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.1958699
+    - serializedVersion: 3
+      time: 0.99819946
+      value: 0.4368019
+      inSlope: 0.73838854
+      outSlope: 0.73838854
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.057279337
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  pitchCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0048828125
+      value: 0.8010864
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8473262605327918936
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4945485, g: 0.63333374, b: 0.7208579, a: 1}
+  m_IndirectSpecularColor: {r: 0.67575175, g: 0.7790319, b: 0.7893795, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 263283077}
   - component: {fileID: 263283079}
   - component: {fileID: 263283078}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LevelChangeTrigger (1)
   m_TagString: Tiltable
   m_Icon: {fileID: 0}
@@ -420,7 +420,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 290710834}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Gate
   m_TagString: Tiltable
   m_Icon: {fileID: 0}
@@ -454,7 +454,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 314468096}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Walls (1)
   m_TagString: Tiltable
   m_Icon: {fileID: 0}
@@ -806,7 +806,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 430480944}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Walls (2)
   m_TagString: Tiltable
   m_Icon: {fileID: 0}
@@ -947,9 +947,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2138632068}
     m_Modifications:
+    - target: {fileID: 660061485062174278, guid: 88b32653a16e24d188658e1e8c74a811, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2416438295950010418, guid: 88b32653a16e24d188658e1e8c74a811, type: 3}
       propertyPath: m_Name
       value: Checkpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 2416438295950010418, guid: 88b32653a16e24d188658e1e8c74a811, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2416438295950010418, guid: 88b32653a16e24d188658e1e8c74a811, type: 3}
       propertyPath: m_TagString
@@ -1410,6 +1418,35 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888048646}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &894414857 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5604304815126394847, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
+  m_PrefabInstance: {fileID: 2025953729}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &894414860 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5952084477401850361, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
+  m_PrefabInstance: {fileID: 2025953729}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &894414862 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 2836407496028957567, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
+  m_PrefabInstance: {fileID: 2025953729}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &894414867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894414857}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcb5570ff90804dde8291446da2d8a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 894414862}
+  audio: {fileID: 894414860}
 --- !u!1 &970972271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1515,6 +1552,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 970972271}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!82 &999020482 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7828296826030201911, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
+  m_PrefabInstance: {fileID: 2025953729}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1056080588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1933,7 +1975,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1268842534}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Gate (1)
   m_TagString: Tiltable
   m_Icon: {fileID: 0}
@@ -2199,7 +2241,7 @@ GameObject:
   - component: {fileID: 1308539030}
   - component: {fileID: 1308539032}
   - component: {fileID: 1308539031}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DropPlatform
   m_TagString: Tiltable
   m_Icon: {fileID: 0}
@@ -2440,7 +2482,7 @@ GameObject:
   - component: {fileID: 1422826009}
   - component: {fileID: 1422826011}
   - component: {fileID: 1422826010}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DropPlatform (1)
   m_TagString: Tiltable
   m_Icon: {fileID: 0}
@@ -3526,7 +3568,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1708788133}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Walls
   m_TagString: Tiltable
   m_Icon: {fileID: 0}
@@ -4455,7 +4497,7 @@ GameObject:
   - component: {fileID: 2015955054}
   - component: {fileID: 2015955056}
   - component: {fileID: 2015955055}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LevelChangeTrigger
   m_TagString: Tiltable
   m_Icon: {fileID: 0}
@@ -4523,6 +4565,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameBall
       objectReference: {fileID: 0}
+    - target: {fileID: 7387384831184887517, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
+      propertyPath: collisionSound2
+      value: 
+      objectReference: {fileID: 999020482}
     - target: {fileID: 7898429388804187542, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4563,10 +4609,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4498934882264148701, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5604304815126394847, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 894414867}
   m_SourcePrefab: {fileID: 100100000, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
 --- !u!1 &2102596883
 GameObject:
