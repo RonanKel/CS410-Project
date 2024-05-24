@@ -18,7 +18,7 @@ public class RollingSoundOld : MonoBehaviour
  
    
  
-    void FixedUpdate()
+    void Update()
     {
         float horizontal = Input.GetAxis ("Horizontal");
         bool isRolling = (rb.velocity.magnitude> 0.05) ;
