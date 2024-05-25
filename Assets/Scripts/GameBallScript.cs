@@ -14,6 +14,7 @@ public class GameBallScript : MonoBehaviour
     // The balls rigidbody
     private Rigidbody rb;
 
+    private CameraFollowGB cam;
 
 
     // Particle system stuff
@@ -22,6 +23,7 @@ public class GameBallScript : MonoBehaviour
     void Awake()
     {
         world = GameObject.Find("World").GetComponent<World>();
+        cam = GameObject.Find("Main Camera").GetComponent<CameraFollowGB>();
     }
 
     // Start is called before the first frame update
@@ -133,6 +135,12 @@ public class GameBallScript : MonoBehaviour
             float collisionSpeed = col.relativeVelocity.magnitude;
             if (collisionSpeed > 1f) {
                 SetParticleSpawner(col, collisionSpeed, ps, 1f);
+            }
+            Debug.Log(collisionSpeed);
+            
+            if (collisionSpeed > 10f) {
+                
+                cam.StartShaking(collisionSpeed);
             }
         }
     }

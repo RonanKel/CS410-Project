@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class CameraFollowGB : MonoBehaviour
 {
@@ -12,6 +13,17 @@ public class CameraFollowGB : MonoBehaviour
 
     private float currentY = 0.0f; // Current angle in Y-axis
     private float currentX = 0.0f; // Current angle in X-axis
+
+    [SerializeField] float maxShakeLength = .5f;
+    [SerializeField] float maxShakeRotation = 1f;
+    [SerializeField] float maxShakeIntensity = 1f;
+
+    public AnimationCurve durationCurve;
+
+    Vector3 shakeVector;
+
+    private float xRot = 0f;
+    private float yRot = 0f;
 
     private bool isFollowing = true;
 
@@ -49,8 +61,8 @@ public class CameraFollowGB : MonoBehaviour
         }
 
         // Calculate rotation and position based on current angles and the fixed distance
-        Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
-        Vector3 position = target.position - (rotation * Vector3.forward * distance);
+        Quaternion rotation = Quaternion.Euler(currentY + xRot, currentX + yRot, 0);
+        Vector3 position = target.position - (rotation * Vector3.forward * distance) + shakeVector;
 
         // Update camera position and rotation
         transform.position = position;
@@ -59,5 +71,39 @@ public class CameraFollowGB : MonoBehaviour
 
     public void SetFollowingStatus(bool status) {
         isFollowing = status;
+    }
+
+    public void StartShaking(float intensity) {
+        StartCoroutine(Shake(intensity));
+    }
+
+    IEnumerator Shake(float intensity) {
+        float intensityRatio = intensity / 100f;
+        float shakeIntensity = Mathf.Lerp(0f, maxShakeIntensity, intensityRatio);
+        float shakeLength = durationCurve.Evaluate(intensityRatio);
+
+        float elapsed = 0f;
+
+        float cushion = 10f;
+
+        while (elapsed < shakeLength) {
+            shakeVector = new Vector3(Random.Range(-shakeIntensity, shakeIntensity), Random.Range(-shakeIntensity, shakeIntensity), Random.Range(-shakeIntensity, shakeIntensity));
+            xRot += Random.Range(-maxShakeRotation, maxShakeRotation);
+            yRot += Random.Range(-maxShakeRotation, maxShakeRotation);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        shakeVector = Vector3.Lerp(Vector3.zero, shakeVector, .7f);
+        yield return null;
+        shakeVector = Vector3.Lerp(Vector3.zero, shakeVector, .7f);
+        yield return null;
+        shakeVector = Vector3.Lerp(Vector3.zero, shakeVector, .5f);
+        yield return null;
+        shakeVector = Vector3.Lerp(Vector3.zero, shakeVector, .5f);
+        yield return null;
+        shakeVector = Vector3.zero;
+        xRot = 0f;
+        yRot = 0f;
     }
 }

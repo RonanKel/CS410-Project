@@ -109,3 +109,33 @@ MonoBehaviour:
   distance: 10
   sensitivityX: 3
   sensitivityY: 3
+  zoomSensitivity: 2
+  minDistance: 5
+  maxDistance: 15
+  maxShakeLength: 0.5
+  maxShakeRotation: 0.2
+  maxShakeIntensity: 0.2
+  durationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.11197281
+      value: 0.022064209
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9937744
+      value: 0.46831894
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
