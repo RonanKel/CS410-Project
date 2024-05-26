@@ -266,7 +266,7 @@ MonoBehaviour:
   collisionSound2: {fileID: 7828296826030201911}
   rollingSound: {fileID: 5952084477401850361}
   radius: 0.5
-  maxSpeed: 10.7
+  maxSpeed: 11
   volumeCurve:
     serializedVersion: 2
     m_Curve:
