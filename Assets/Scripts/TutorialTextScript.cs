@@ -43,7 +43,7 @@ public class TutorialTextScript : MonoBehaviour
     void StartFade() {
         startFadeTime = Time.time;
         isFading = true;
-        Debug.Log("StartFade");
+        //Debug.Log("StartFade");
     }
 
     // Reset the text
@@ -54,7 +54,7 @@ public class TutorialTextScript : MonoBehaviour
         startTime = 0f;
         startFadeTime = 0f;
         isFading = false;
-        Debug.Log("End Fade");
+        //Debug.Log("End Fade");
         gameObject.SetActive(false);
 
     }

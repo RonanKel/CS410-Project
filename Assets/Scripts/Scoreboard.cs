@@ -56,8 +56,8 @@ public class Scoreboard : MonoBehaviour
 
         for (int i = 0; i < times.Count; i++) {
             PlayerPrefs.SetFloat(ToStringFormat(level, i), times[i]);
-            Debug.Log(ToStringFormat(level, i));
-            Debug.Log(times[i]);
+            //Debug.Log(ToStringFormat(level, i));
+            //Debug.Log(times[i]);
         }
         PlayerPrefs.Save();
     }

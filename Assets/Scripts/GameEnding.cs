@@ -25,7 +25,7 @@ public class GameEnding : MonoBehaviour
     {
         currentTime = startMinutes * 60; // Converting start time into seconds
         timerActive = true;
-        Debug.Log("START!");
+        //Debug.Log("START!");
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         world = GameObject.Find("World").GetComponent<World>();
@@ -37,7 +37,7 @@ public class GameEnding : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             StopTimer();
-            Debug.Log("You Win!!!");
+            //Debug.Log("You Win!!!");
             victoryScreen.SetActive(true);
             scoreboard.GetComponent<Scoreboard>().SaveScore(((startMinutes * 60f) - currentTime));
             scoreboard.SetActive(true);

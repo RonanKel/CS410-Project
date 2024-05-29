@@ -33,11 +33,11 @@ public class GameBallScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(transform.rotation);
+        //Debug.Log(transform.rotation);
         // Finds the rigidbody component 
         rb = GetComponent<Rigidbody>();
         if (currentCheckpoint) {
-            Debug.Log("THis");
+            //Debug.Log("THis");
             Respawn();
             rb.AddForce(Vector3.down * 1000f);
         }
@@ -142,7 +142,7 @@ public class GameBallScript : MonoBehaviour
                 if (collisionSpeed > 1f) {
                     SetParticleSpawner(col, collisionSpeed, ps, 1f);
                 }
-                Debug.Log(collisionSpeed);
+                // Debug.Log(collisionSpeed);
                 
                 if (collisionSpeed > 10f) {
                     

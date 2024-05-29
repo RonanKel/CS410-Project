@@ -34,7 +34,7 @@ public class GameballSound : MonoBehaviour
         if (CheckIfRolling()) {
             if (!isPlaying) {
                 rollingSound.Play();
-                Debug.Log("play");
+                //Debug.Log("play");
                 isPlaying = true;
             }
         }

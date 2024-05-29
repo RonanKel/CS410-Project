@@ -21,7 +21,7 @@ public class EndStars : MonoBehaviour
     
     //gameEnding = FindObjectOfType<GameEnding>();
     endTime = gameEnding.currentTime;
-    Debug.Log("Current Time: " + gameEnding.currentTime);
+    //Debug.Log("Current Time: " + gameEnding.currentTime);
 
     //One Star
     if(endTime > oneTime)
