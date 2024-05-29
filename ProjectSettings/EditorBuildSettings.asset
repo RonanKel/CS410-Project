@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MaxScene.unity
     guid: ae10986a9d557b44d9eeb04df3349031
+  - enabled: 1
+    path: Assets/Scenes/JoshScene.unity
+    guid: a66ccf0a50c4ee1478ae2df6cd1edacb
   m_configObjects: {}
