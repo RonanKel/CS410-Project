@@ -9,7 +9,7 @@ using System;
 public class GameEnding : MonoBehaviour
 {
     bool timerActive = false;
-    float currentTime;
+    public float currentTime;
     public int startMinutes;
     public TMP_Text currentTimeText;
     public GameObject victoryScreen;
