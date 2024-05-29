@@ -41510,35 +41510,6 @@ Transform:
   - {fileID: 1619608587}
   m_Father: {fileID: 1552058414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &894414857 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5604304815126394847, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
-  m_PrefabInstance: {fileID: 2025953729}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &894414860 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 5952084477401850361, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
-  m_PrefabInstance: {fileID: 2025953729}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &894414862 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 2836407496028957567, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
-  m_PrefabInstance: {fileID: 2025953729}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &894414867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 894414857}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcb5570ff90804dde8291446da2d8a14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 894414862}
-  audio: {fileID: 894414860}
 --- !u!43 &896810926
 Mesh:
   m_ObjectHideFlags: 0
@@ -92446,7 +92417,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29db8df9bcf8d3d4a9137106d0fe43da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeDuration: 5
   textColor: {r: 1, g: 1, b: 1, a: 255}
   finalColor: {r: 1, g: 1, b: 1, a: 0}
   fontMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -92956,10 +92926,7 @@ PrefabInstance:
     - {fileID: 4498934882264148701, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5604304815126394847, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 894414867}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
 --- !u!1 &2066564488
 GameObject:
