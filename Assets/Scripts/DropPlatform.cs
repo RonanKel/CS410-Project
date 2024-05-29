@@ -22,7 +22,7 @@ public class DropPlatform : MonoBehaviour
 
     //[SerializeField] Vector3 targetRotation = new Vector3(180f, 0f, 0f);
 
-    CameraFollowGB camera;
+    CameraFollowGB cam;
     World world;
 
     Transform ball;
@@ -37,7 +37,7 @@ public class DropPlatform : MonoBehaviour
     void Start()
     {
         dropMaterial.color = startingColor;
-        camera = GameObject.Find("Main Camera").GetComponent<CameraFollowGB>();
+        cam = GameObject.Find("Main Camera").GetComponent<CameraFollowGB>();
         world = GameObject.Find("World").GetComponent<World>();
         sound = GetComponent<AudioSource>();
     }
@@ -69,7 +69,7 @@ public class DropPlatform : MonoBehaviour
         EndTimer();
 
         //gameObject.SetActive(false);
-        camera.SetFollowingStatus(false);
+        cam.SetFollowingStatus(false);
         world.SetRotationStatus(false);
         ball.SetParent(transform);
         RotatePlatform();

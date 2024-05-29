@@ -6,7 +6,7 @@ using UnityEngine;
 public class RollingSoundOld : MonoBehaviour
 {
     public Rigidbody rb;
-    public AudioSource audio;
+    public AudioSource sound;
     public AudioClip thud;
     public AudioClip rolling;
  
@@ -27,16 +27,16 @@ public class RollingSoundOld : MonoBehaviour
         if(isRolling && grounded){
             //Debug.Log("is Rolling and Grounded");
             //Debug.Log(rb.velocity.magnitude);
-            if(!audio.isPlaying)
+            if(!sound.isPlaying)
             {
-                audio.Play();
+                sound.Play();
                 //Debug.Log("Played");
             }
         }
 
         else
         {
-            audio.Pause();
+            sound.Pause();
             //Debug.Log("Paused");
         }
 
@@ -47,10 +47,10 @@ public class RollingSoundOld : MonoBehaviour
         var scaledVelocity = Remap(Mathf.Clamp(speed, 0, maxSpeed), 0, maxSpeed, 0, 1);
  
         // set volume based on volume curve
-        audio.volume = volumeCurve.Evaluate(scaledVelocity);
+        sound.volume = volumeCurve.Evaluate(scaledVelocity);
  
         // set pitch based on pitch curve
-        audio.pitch = pitchCurve.Evaluate(scaledVelocity);
+        sound.pitch = pitchCurve.Evaluate(scaledVelocity);
         
         
     }

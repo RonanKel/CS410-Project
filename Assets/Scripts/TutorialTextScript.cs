@@ -5,7 +5,6 @@ using TMPro;
 
 public class TutorialTextScript : MonoBehaviour
 {
-    [SerializeField] float fadeDuration = 5f;
     float startTime;
     float startFadeTime;
 

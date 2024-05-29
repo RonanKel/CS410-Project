@@ -5,7 +5,7 @@ using UnityEngine;
 public class RollingSound : MonoBehaviour
 {
    [SerializeField] Rigidbody rb;
-   [SerializeField] AudioSource audio;
+   [SerializeField] AudioSource sound;
 
    
 
@@ -19,14 +19,14 @@ public class RollingSound : MonoBehaviour
    {
     if(rb.velocity.magnitude > 0.05)
     {
-        if (!audio.isPlaying)
+        if (!sound.isPlaying)
         {
-            audio.Play();
+            sound.Play();
         }
     }
     else
     {
-        audio.Pause();
+        sound.Pause();
     }
     
    }
@@ -35,19 +35,19 @@ public class RollingSound : MonoBehaviour
    {
     if(rb.velocity.magnitude > 0.1)
     {
-        if (!audio.isPlaying)
+        if (!sound.isPlaying)
         {
-            audio.Play();
+            sound.Play();
         }
    }
      else
         {
-            audio.Pause();
+            sound.Pause();
         }
     }
 
     void OnCollisionExit (Collision ground) {
-        audio.Stop();
+        sound.Stop();
     }
 
     

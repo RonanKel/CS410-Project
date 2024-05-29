@@ -14,7 +14,6 @@ public class CameraFollowGB : MonoBehaviour
     private float currentY = 0.0f; // Current angle in Y-axis
     private float currentX = 0.0f; // Current angle in X-axis
 
-    [SerializeField] float maxShakeLength = .5f;
     [SerializeField] float maxShakeRotation = 1f;
     [SerializeField] float maxShakeIntensity = 1f;
 
@@ -83,8 +82,6 @@ public class CameraFollowGB : MonoBehaviour
         float shakeLength = durationCurve.Evaluate(intensityRatio);
 
         float elapsed = 0f;
-
-        float cushion = 10f;
 
         while (elapsed < shakeLength) {
             shakeVector = new Vector3(Random.Range(-shakeIntensity, shakeIntensity), Random.Range(-shakeIntensity, shakeIntensity), Random.Range(-shakeIntensity, shakeIntensity));
