@@ -29,7 +29,7 @@ public class Checkpoint : MonoBehaviour
                 gB.SetLevelCheckpoint(this);
                 //col.transform.GetComponent<GameBallScript>().SetLevelCheckpoint(this);
             }
-            gB.SetLevelCheckpoint(this);
+            gB.SetCurrentCheckpoint(this);
             //col.transform.GetComponent<GameBallScript>().SetCurrentCheckpoint(this);
         }
     }
