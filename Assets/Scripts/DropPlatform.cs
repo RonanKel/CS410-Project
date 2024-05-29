@@ -121,12 +121,12 @@ public class DropPlatform : MonoBehaviour
         isRotating = true;
 
         float elapsedTime = 0;
-        Quaternion startRotation = transform.rotation;
+        Quaternion startRotation = transform.localRotation;
         Quaternion targetRotation = Quaternion.Euler(180, 0, 0); // Rotate 180 degrees around the x-axis
 
         while (elapsedTime < rotationDuration)
         {
-            transform.rotation = Quaternion.Slerp(startRotation, targetRotation, elapsedTime / rotationDuration);
+            transform.localRotation = Quaternion.Slerp(startRotation, targetRotation, elapsedTime / rotationDuration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
