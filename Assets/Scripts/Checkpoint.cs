@@ -8,6 +8,8 @@ public class Checkpoint : MonoBehaviour
 
     private Quaternion spawnRotation = new Quaternion(0f, 0f, 0f, 0f);
 
+    private GameBallScript gB;
+
     // Start is called before the first frame update
     // Sets the spawn rotation to the opposite of the current rotation
     void Awake()
@@ -15,14 +17,20 @@ public class Checkpoint : MonoBehaviour
         Vector3 eulerAngles = transform.localRotation.eulerAngles;
         spawnRotation = Quaternion.Euler(-eulerAngles.x, 0f, -eulerAngles.z);
     }
+
+    void Start()
+    {
+        gB = GameObject.Find("GameBall").GetComponent<GameBallScript>();
+    }
     // When the player enters the checkpoint, the player's current checkpoint is set to this checkpoint
     void OnTriggerEnter(Collider col) {
         if (col.transform.CompareTag("Player")) {
             if (isLevelCheckpoint) {
-                col.transform.GetComponent<GameBallScript>().SetLevelCheckpoint(this);
+                gB.SetLevelCheckpoint(this);
+                //col.transform.GetComponent<GameBallScript>().SetLevelCheckpoint(this);
             }
-
-            col.transform.GetComponent<GameBallScript>().SetCurrentCheckpoint(this);
+            gB.SetCurrentCheckpoint(this);
+            //col.transform.GetComponent<GameBallScript>().SetCurrentCheckpoint(this);
         }
     }
 

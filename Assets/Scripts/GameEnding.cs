@@ -17,6 +17,8 @@ public class GameEnding : MonoBehaviour
     public GameObject scoreboard;
 
     private GameManager gameManager;
+    private World world;
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,7 @@ public class GameEnding : MonoBehaviour
         Debug.Log("START!");
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        world = GameObject.Find("World").GetComponent<World>();
 
     }
 
@@ -38,7 +41,9 @@ public class GameEnding : MonoBehaviour
             victoryScreen.SetActive(true);
             scoreboard.GetComponent<Scoreboard>().SaveScore(((startMinutes * 60f) - currentTime));
             scoreboard.SetActive(true);
+            world.SetRotationStatus(false);
             gameManager.UnhideMouse();
+            gameManager.SetPausability(false);
             
         }
     }

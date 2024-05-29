@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DropPlatform : MonoBehaviour
 {
@@ -9,6 +10,17 @@ public class DropPlatform : MonoBehaviour
     [SerializeField] Color startingColor;
     [SerializeField] Color selectedColor;
     [SerializeField] Material dropMaterial;
+
+    [SerializeField] float waitDuration = 4f;
+
+    [SerializeField] int sceneIndex;
+
+    [SerializeField] bool willCloseGame = false;
+
+
+    AudioSource sound;
+
+    //[SerializeField] Vector3 targetRotation = new Vector3(180f, 0f, 0f);
 
     CameraFollowGB camera;
     World world;
@@ -19,6 +31,7 @@ public class DropPlatform : MonoBehaviour
     public float rotationDuration = 0.5f;
     private bool isRotating = false;
 
+
     // Start is called before the first frame update
     // Find the camera and world objects
     void Start()
@@ -26,6 +39,7 @@ public class DropPlatform : MonoBehaviour
         dropMaterial.color = startingColor;
         camera = GameObject.Find("Main Camera").GetComponent<CameraFollowGB>();
         world = GameObject.Find("World").GetComponent<World>();
+        sound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,9 +49,9 @@ public class DropPlatform : MonoBehaviour
         if (isTicking)
         {
             timer += Time.deltaTime;
-            dropMaterial.color = Color.Lerp(startingColor, selectedColor, timer / 3f);
+            dropMaterial.color = Color.Lerp(startingColor, selectedColor, timer / waitDuration);
         }
-        if (timer > 3)
+        if (timer > waitDuration)
         {
             Drop();
         }
@@ -64,9 +78,9 @@ public class DropPlatform : MonoBehaviour
     void EndTimer()
     {
         isTicking = false;
-        dropMaterial.color = Color.Lerp(startingColor, selectedColor, timer / 3f);
+        dropMaterial.color = Color.Lerp(startingColor, selectedColor, timer / waitDuration);
         timer = 0f;
-        dropMaterial.color = Color.Lerp(startingColor, selectedColor, timer / 3f);
+        dropMaterial.color = Color.Lerp(startingColor, selectedColor, timer / waitDuration);
 
     }
     // Start the timer
@@ -81,6 +95,7 @@ public class DropPlatform : MonoBehaviour
         {
             ball = col.transform;
             StartTimer();
+            sound.Play();
         }
     }
     // If the player exits the trigger, end the timer
@@ -89,6 +104,7 @@ public class DropPlatform : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
             EndTimer();
+            sound.Stop();
         }
     }
     // Rotate the platform
@@ -110,12 +126,26 @@ public class DropPlatform : MonoBehaviour
 
         while (elapsedTime < rotationDuration)
         {
-            transform.localRotation = Quaternion.Slerp(startRotation, targetRotation, elapsedTime / rotationDuration);
+            transform.rotation = Quaternion.Slerp(startRotation, targetRotation, elapsedTime / rotationDuration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
         transform.localRotation = targetRotation;
         isRotating = false;
+        ball.gameObject.SetActive(false);
+        if (willCloseGame) {
+            Invoke("CloseGame", 2f);
+
+        }
+        Invoke("ChangeScene", 2f);
+        
+    }
+
+    void ChangeScene() {
+        SceneManager.LoadScene(sceneIndex);
+    }
+    void CloseGame() {
+        Application.Quit();
     }
 }

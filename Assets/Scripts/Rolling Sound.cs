@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class RollingSound : MonoBehaviour
 {
-   public Rigidbody rb;
-   public AudioSource audio;
+   [SerializeField] Rigidbody rb;
+   [SerializeField] AudioSource audio;
+
+   
+
+   void Update () 
+   {
+        
+
+   }
 
    void OnCollisionEnter (Collision ground)
    {
@@ -37,5 +45,11 @@ public class RollingSound : MonoBehaviour
             audio.Pause();
         }
     }
+
+    void OnCollisionExit (Collision ground) {
+        audio.Stop();
+    }
+
+    
     
 }

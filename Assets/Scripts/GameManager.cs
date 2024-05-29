@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
 {
     GameObject pauseMenu;
     GameObject scoreboard;
+
+    bool isPaused = false;
+    bool isPausable = true;
     // Start is called before the first frame update
 
     void Awake()
@@ -29,8 +32,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            PauseGame();
+        if (Input.GetKeyDown(KeyCode.Escape) && isPausable) {
+            if (isPaused) {
+                UnpauseGame();
+            }
+            else {
+                PauseGame();
+            }
         }
     }
 
@@ -38,6 +46,7 @@ public class GameManager : MonoBehaviour
     public void PauseGame() {
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
+        isPaused = true;
         if (scoreboard != null) {
             scoreboard.SetActive(true);
         }
@@ -47,10 +56,15 @@ public class GameManager : MonoBehaviour
 
     public void UnpauseGame() {
         pauseMenu.SetActive(false);
+        isPaused = false;
         if (scoreboard != null) {
             scoreboard.SetActive(false);
         }
         ReturnToGame();
+    }
+
+    public void SetPausability(bool status) {
+        isPausable = status;
     }
 
     public void ReturnToGame() {
