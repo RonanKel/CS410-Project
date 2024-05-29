@@ -16,6 +16,10 @@ public class GameBallScript : MonoBehaviour
 
     private CameraFollowGB cam;
 
+    [SerializeField] float hitPauseDuration = .1f;
+
+    [SerializeField] AnimationCurve stopLengthCurve;
+
 
     // Particle system stuff
     [SerializeField] ParticleSystem ps;
@@ -143,6 +147,7 @@ public class GameBallScript : MonoBehaviour
                 if (collisionSpeed > 10f) {
                     
                     cam.StartShaking(collisionSpeed);
+                    StartCoroutine(HitPause(collisionSpeed));
                 }
             }
         }
@@ -154,6 +159,14 @@ public class GameBallScript : MonoBehaviour
             if (collisionSpeed > 0f)
             SetParticleSpawner(col, collisionSpeed, ps, .25f);
         }
+    }
+
+    IEnumerator HitPause(float collisionSpeed) {
+        Time.timeScale = 0f;
+
+        hitPauseDuration = stopLengthCurve.Evaluate(collisionSpeed / 100f);
+        yield return new WaitForSecondsRealtime(hitPauseDuration);
+        Time.timeScale = 1f;
     }
 
 }
