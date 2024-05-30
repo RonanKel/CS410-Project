@@ -28,7 +28,9 @@ public class CameraFollowGB : MonoBehaviour
 
     void Awake()
     {
-        target = GameObject.Find("GameBall").transform;
+        if (!target) {
+            target = GameObject.Find("GameBall").transform;
+        }
     }
     
     void Update()

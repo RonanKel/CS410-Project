@@ -120,13 +120,14 @@ public class GameBallScript : MonoBehaviour
 
         // Set the speed and size of the particles
         var mainModule = particleSystem.main;
+        //Debug.Log(intensityRatio);
         mainModule.startSpeed = new ParticleSystem.MinMaxCurve(Mathf.Lerp(0f, 12f, intensityRatio), Mathf.Lerp(0f, 30f, intensityRatio));
-        mainModule.startSize = new ParticleSystem.MinMaxCurve(Mathf.Lerp(.01f, 1.5f, intensityRatio), Mathf.Lerp(.1f, .175f, intensityRatio));
+        mainModule.startSize = new ParticleSystem.MinMaxCurve(Mathf.Lerp(.05f, 1.5f, intensityRatio), Mathf.Lerp(.1f, .175f, intensityRatio));
 
         // Set the amount of particles to be made
         var emissionModule = particleSystem.emission;
         ParticleSystem.Burst burst = emissionModule.GetBurst(0);
-        burst.count = (int) Mathf.Lerp(0, 100f, intensityRatio);
+        burst.count = (int) Mathf.Lerp(1f, 100f, intensityRatio);
         emissionModule.SetBurst(0, burst);
 
         // Play the effect!
@@ -156,8 +157,10 @@ public class GameBallScript : MonoBehaviour
     void OnCollisionStay(Collision col) {
         if (!col.gameObject.CompareTag("Player") && !col.gameObject.CompareTag("Checkpoint") && ps) {
             float collisionSpeed = col.relativeVelocity.magnitude;
-            if (collisionSpeed > 0f)
-            SetParticleSpawner(col, collisionSpeed, ps, .25f);
+            //float collisionSpeed = rb.velocity.magnitude;
+            if (collisionSpeed > .001f) {
+                SetParticleSpawner(col, collisionSpeed, ps, .25f);
+            }
         }
     }
 
