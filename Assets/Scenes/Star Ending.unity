@@ -256,6 +256,10 @@ PrefabInstance:
       value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 2474937299084481644, guid: d5814003fd69f4e9d89777591cc0234d, type: 3}
+      propertyPath: secondCamera
+      value: 
+      objectReference: {fileID: 1227881377}
+    - target: {fileID: 2474937299084481644, guid: d5814003fd69f4e9d89777591cc0234d, type: 3}
       propertyPath: durationCurve.m_Curve.Array.data[0].time
       value: 0.09855652
       objectReference: {fileID: 0}
@@ -8452,7 +8456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!20 &1227881379
 Camera:
   m_ObjectHideFlags: 0
@@ -8540,6 +8544,7 @@ MonoBehaviour:
   maxDistance: 20
   maxShakeRotation: 0
   maxShakeIntensity: 0
+  secondCamera: {fileID: 0}
   durationCurve:
     serializedVersion: 2
     m_Curve: []

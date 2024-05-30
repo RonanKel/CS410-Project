@@ -6,6 +6,8 @@ public class JumpPad : MonoBehaviour
 {
     // Start is called before the first frame update
    [SerializeField] float jumpAmount = 50000f;
+   [SerializeField] ParticleSystem feedbackParticle;
+   [SerializeField] AudioSource feedbackAudio;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -22,6 +24,10 @@ public class JumpPad : MonoBehaviour
                 //apply vetical velocity force
                 playerRB.AddForce(Vector3.up * jumpAmount);
                 //playerRB.velocity = new Vector3(0,jumpAmount,0);
+
+                // visual feedback
+                feedbackParticle.Play();
+                feedbackAudio.Play();
              }
 
         }
