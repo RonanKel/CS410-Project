@@ -10,7 +10,7 @@ public class GameEnding : MonoBehaviour
 {
     bool timerActive = false;
     public float currentTime;
-    public int startMinutes;
+    //public int startMinutes;
     public TMP_Text currentTimeText;
     public GameObject victoryScreen;
     public GameObject player;
@@ -23,7 +23,7 @@ public class GameEnding : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentTime = startMinutes * 60; // Converting start time into seconds
+        currentTime = 0; // Converting start time into seconds
         timerActive = true;
         //Debug.Log("START!");
 
@@ -39,7 +39,7 @@ public class GameEnding : MonoBehaviour
             StopTimer();
             //Debug.Log("You Win!!!");
             victoryScreen.SetActive(true);
-            scoreboard.GetComponent<Scoreboard>().SaveScore(((startMinutes * 60f) - currentTime));
+            scoreboard.GetComponent<Scoreboard>().SaveScore((currentTime));
             scoreboard.SetActive(true);
             world.SetRotationStatus(false);
             gameManager.UnhideMouse();
@@ -52,11 +52,15 @@ public class GameEnding : MonoBehaviour
     void Update()
     {
         if (timerActive == true) {
-            currentTime = currentTime - Time.deltaTime; // Countdown
-            if (currentTime <= 0) { // Once timer reaches 0 it will stop
-                StopTimer();
-                player.GetComponent<GameBallScript>().RestartLevel();
-            }
+            currentTime = currentTime + Time.deltaTime; // Countup
+            
+            // Old code from when timer counted down
+            // if (currentTime <= 0) { // Once timer reaches 0 it will stop
+                
+                
+            //     // StopTimer();
+            //     // player.GetComponent<GameBallScript>().RestartLevel();
+            // }
         }
         TimeSpan time = TimeSpan.FromSeconds(currentTime);
         currentTimeText.text = "Timer: " + time.ToString(@"mm\:ss");
