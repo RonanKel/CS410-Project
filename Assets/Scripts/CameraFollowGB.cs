@@ -17,6 +17,8 @@ public class CameraFollowGB : MonoBehaviour
     [SerializeField] float maxShakeRotation = 1f;
     [SerializeField] float maxShakeIntensity = 1f;
 
+    [SerializeField] GameObject secondCamera;
+
     public AnimationCurve durationCurve;
 
     Vector3 shakeVector;
@@ -30,6 +32,13 @@ public class CameraFollowGB : MonoBehaviour
     {
         if (!target) {
             target = GameObject.Find("GameBall").transform;
+        }
+    }
+
+    void Start()
+    {
+        if (secondCamera) {
+            secondCamera.SetActive(true);
         }
     }
     
