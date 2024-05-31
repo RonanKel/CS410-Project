@@ -20,6 +20,8 @@ public class GameballSound : MonoBehaviour
 
     bool isRolling;
     float speed;
+
+    [SerializeField] float fadeOutLength;
     
 
     void Start() 
@@ -32,27 +34,33 @@ public class GameballSound : MonoBehaviour
         isRolling = (rb.velocity.magnitude > 0.05f);
 
         if (CheckIfRolling()) {
+            Debug.Log("Sound!!!");
             if (!isPlaying) {
                 rollingSound.Play();
                 //Debug.Log("play");
                 isPlaying = true;
             }
+            speed = rb.velocity.magnitude;
+
+            // normalize speed into 0-1
+            var scaledVelocity = Remap(Mathf.Clamp(speed, 0, maxSpeed), 0, maxSpeed, 0, 1);
+
+            // set volume based on volume curve
+            GetComponent<AudioSource>().volume = volumeCurve.Evaluate(scaledVelocity);
+ 
+            // set pitch based on pitch curve
+            GetComponent<AudioSource>().pitch = pitchCurve.Evaluate(scaledVelocity);
         }
         else {
-            rollingSound.Pause();
+            Debug.Log("No Sound!!");
+            if (isPlaying) {
+                StartFadeOut(rollingSound, fadeOutLength);
+            }
             isPlaying = false;
+            
         }
 
-        speed = rb.velocity.magnitude;
-
-        // normalize speed into 0-1
-        var scaledVelocity = Remap(Mathf.Clamp(speed, 0, maxSpeed), 0, maxSpeed, 0, 1);
-
-        // set volume based on volume curve
-        GetComponent<AudioSource>().volume = volumeCurve.Evaluate(scaledVelocity);
- 
-        // set pitch based on pitch curve
-        GetComponent<AudioSource>().pitch = pitchCurve.Evaluate(scaledVelocity);
+        
     }
 
     void OnCollisionEnter(Collision hit)
@@ -83,6 +91,27 @@ public class GameballSound : MonoBehaviour
     public float Remap(float value, float from1, float to1, float from2, float to2)
     {
         return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+    }
+
+    void StartFadeOut(AudioSource sound, float duration) {
+        StartCoroutine(FadeOut(sound, duration));
+    }
+
+    IEnumerator FadeOut(AudioSource sound, float duration) {
+        float startVolume = sound.volume;
+        float counter = 0f;
+
+        while (counter < duration) {
+
+            sound.volume = Mathf.Lerp(startVolume, .01f, counter / duration);
+
+            counter += Time.deltaTime;
+
+            yield return null;
+        }
+
+        sound.volume = .01f;
+        sound.Stop();
     }
 
 }

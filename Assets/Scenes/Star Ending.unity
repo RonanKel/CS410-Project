@@ -975,6 +975,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameBall
       objectReference: {fileID: 0}
+    - target: {fileID: 5952084477401850361, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 48876793ab7d54502a773347f923b757, type: 3}
+    - target: {fileID: 7387384831184887517, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
+      propertyPath: fadeOutLength
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828296826030201911, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7898429388804187542, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1014,6 +1026,10 @@ PrefabInstance:
     - target: {fileID: 7898429388804187542, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8901996033364824864, guid: d7cddf22a8e114104b1ea40b21fa0b63, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5868,7 +5884,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTime: 0
-  startMinutes: 5
   currentTimeText: {fileID: 14113782}
   victoryScreen: {fileID: 395827009}
   player: {fileID: 132586635}
