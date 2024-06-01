@@ -24,17 +24,17 @@ public class EndStars : MonoBehaviour
     //Debug.Log("Current Time: " + gameEnding.currentTime);
 
     //One Star
-    if(endTime > oneTime)
+    if(endTime < oneTime)
     {
         starOne.color = myColor;
 
         //Two Stars
-        if(endTime > twoTime)
+        if(endTime < twoTime)
         {
             starTwo.color = myColor;
 
             //Three Stars
-            if(endTime > threeTime)
+            if(endTime < threeTime)
             {
                 starThree.color = myColor;
             }
