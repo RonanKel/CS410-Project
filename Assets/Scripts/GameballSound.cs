@@ -34,7 +34,6 @@ public class GameballSound : MonoBehaviour
         isRolling = (rb.velocity.magnitude > 0.05f);
 
         if (CheckIfRolling()) {
-            Debug.Log("Sound!!!");
             if (!isPlaying) {
                 rollingSound.Play();
                 //Debug.Log("play");
@@ -52,7 +51,6 @@ public class GameballSound : MonoBehaviour
             GetComponent<AudioSource>().pitch = pitchCurve.Evaluate(scaledVelocity);
         }
         else {
-            Debug.Log("No Sound!!");
             if (isPlaying) {
                 StartFadeOut(rollingSound, fadeOutLength);
             }

@@ -77,6 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeaf4f41926244f2abd0b42c65530366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLevelCheckpoint: 0
+  yRotation: 0
 --- !u!65 &5196085462396486888
 BoxCollider:
   m_ObjectHideFlags: 0

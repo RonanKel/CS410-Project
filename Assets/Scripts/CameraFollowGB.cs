@@ -83,6 +83,13 @@ public class CameraFollowGB : MonoBehaviour
         isFollowing = status;
     }
 
+    public void SetCameraOrientation(Vector2 xYRotation) {
+        currentY = xYRotation.x;
+        currentX = xYRotation.y;
+        //transform.position = target.position - (rotation * Vector3.forward * distance);
+        //transform.LookAt(target);
+    }
+
     public void StartShaking(float intensity) {
         StartCoroutine(Shake(intensity));
     }
@@ -91,6 +98,9 @@ public class CameraFollowGB : MonoBehaviour
         float intensityRatio = intensity / 100f;
         float shakeIntensity = Mathf.Lerp(0f, maxShakeIntensity, intensityRatio);
         float shakeLength = durationCurve.Evaluate(intensityRatio);
+
+        float currXRot = xRot;
+        float currYRot = yRot;
 
         float elapsed = 0f;
 
@@ -111,7 +121,7 @@ public class CameraFollowGB : MonoBehaviour
         shakeVector = Vector3.Lerp(Vector3.zero, shakeVector, .5f);
         yield return null;
         shakeVector = Vector3.zero;
-        xRot = 0f;
-        yRot = 0f;
+        xRot = currXRot;
+        yRot = currYRot;
     }
 }

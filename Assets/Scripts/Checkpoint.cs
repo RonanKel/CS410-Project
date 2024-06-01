@@ -5,10 +5,12 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     [SerializeField] bool isLevelCheckpoint = false;
+    [SerializeField] Vector2 xYRotation = new Vector2(15f, 0f);
 
     private Quaternion spawnRotation = new Quaternion(0f, 0f, 0f, 0f);
 
     private GameBallScript gB;
+    private CameraFollowGB cam;
 
     // Start is called before the first frame update
     // Sets the spawn rotation to the opposite of the current rotation
@@ -21,6 +23,7 @@ public class Checkpoint : MonoBehaviour
     void Start()
     {
         gB = GameObject.Find("GameBall").GetComponent<GameBallScript>();
+        cam = GameObject.Find("Main Camera").GetComponent<CameraFollowGB>();
     }
     // When the player enters the checkpoint, the player's current checkpoint is set to this checkpoint
     void OnTriggerEnter(Collider col) {
@@ -32,6 +35,10 @@ public class Checkpoint : MonoBehaviour
             gB.SetCurrentCheckpoint(this);
             //col.transform.GetComponent<GameBallScript>().SetCurrentCheckpoint(this);
         }
+    }
+
+    public Vector2 GetCameraXYRotation() {
+        return xYRotation;
     }
 
     // Returns the position of the spawn point

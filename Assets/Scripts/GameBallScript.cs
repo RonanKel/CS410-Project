@@ -78,6 +78,9 @@ public class GameBallScript : MonoBehaviour
         // Sets the position of the ball to its respawn point
         transform.position = currentCheckpoint.GetSpawnPosition();
 
+        // Turns the camera in the direction the player should go
+        cam.SetCameraOrientation(currentCheckpoint.GetCameraXYRotation());
+
         // Unlocks the position after a delay
         Invoke("UnlockHorizontalPosition", .7f);
     }
