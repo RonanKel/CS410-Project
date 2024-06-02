@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43669134, g: 0.48429018, b: 0.56453854, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311736, g: 0.38073877, b: 0.3587248, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7328,9 +7328,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0511b8e899b9847f696e594913452b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startTime: 0
   currentTime: 0
-  startMinutes: 5
-  currentTimeText: {fileID: 446237328}
+  timerText: {fileID: 446237328}
   victoryScreen: {fileID: 1423359698}
   player: {fileID: 2092467025}
   scoreboard: {fileID: 1099381085}
@@ -53796,6 +53796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLevelCheckpoint: 0
+  xYRotation: {x: 15, y: 0}
 --- !u!64 &1364157397
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -59393,9 +59394,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0511b8e899b9847f696e594913452b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startTime: 0
   currentTime: 0
-  startMinutes: 5
-  currentTimeText: {fileID: 446237328}
+  timerText: {fileID: 446237328}
   victoryScreen: {fileID: 1423359698}
   player: {fileID: 2092467025}
   scoreboard: {fileID: 1099381085}
@@ -65468,6 +65469,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4699927985685822579, guid: e42d9c6f1306b4a1fb3c1e8254bdd5b9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5123876231748939694, guid: e42d9c6f1306b4a1fb3c1e8254bdd5b9, type: 3}
       propertyPath: oneTime
       value: 100
@@ -66932,7 +66937,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588621506}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 54d8e83e2ba36e948a92d7167f7dee9b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -74114,6 +74119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLevelCheckpoint: 0
+  xYRotation: {x: 15, y: 0}
 --- !u!64 &1640738110
 MeshCollider:
   m_ObjectHideFlags: 0

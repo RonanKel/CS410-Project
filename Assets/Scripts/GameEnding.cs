@@ -9,9 +9,10 @@ using System;
 public class GameEnding : MonoBehaviour
 {
     bool timerActive = false;
+    public float startTime;
     public float currentTime;
     //public int startMinutes;
-    public TMP_Text currentTimeText;
+    public TMP_Text timerText;
     public GameObject victoryScreen;
     public GameObject player;
     public GameObject scoreboard;
@@ -23,7 +24,7 @@ public class GameEnding : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentTime = 0; // Converting start time into seconds
+        currentTime = startTime * 60; // Converting start time into seconds
         timerActive = true;
         //Debug.Log("START!");
 
@@ -63,7 +64,7 @@ public class GameEnding : MonoBehaviour
             // }
         }
         TimeSpan time = TimeSpan.FromSeconds(currentTime);
-        currentTimeText.text = "Timer: " + time.ToString(@"mm\:ss");
+        timerText.text = "Timer: " + time.ToString(@"mm\:ss");
     }
 
     public void StartTimer(){
