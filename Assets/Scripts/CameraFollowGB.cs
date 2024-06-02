@@ -90,6 +90,12 @@ public class CameraFollowGB : MonoBehaviour
         //transform.LookAt(target);
     }
 
+    public void SetCameraOrientation(float yRotation) {
+        currentX = yRotation;
+        //transform.position = target.position - (rotation * Vector3.forward * distance);
+        //transform.LookAt(target);
+    }
+
     public void StartShaking(float intensity) {
         StartCoroutine(Shake(intensity));
     }

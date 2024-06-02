@@ -153,6 +153,7 @@ MonoBehaviour:
   world: {fileID: 0}
   levelCheckpoint: {fileID: 0}
   currentCheckpoint: {fileID: 0}
+  rotationAssistantCamera: {fileID: 0}
   hitPauseDuration: 0.1
   stopLengthCurve:
     serializedVersion: 2
@@ -189,7 +190,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 97d309a75199446f0b24f1d700aabbaf, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 48876793ab7d54502a773347f923b757, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -340,6 +341,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  fadeOutLength: 0.1
 --- !u!1 &8473262605327918936
 GameObject:
   m_ObjectHideFlags: 0

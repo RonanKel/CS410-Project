@@ -16,6 +16,8 @@ public class GameBallScript : MonoBehaviour
 
     private CameraFollowGB cam;
 
+    [SerializeField] CameraFollowGB rotationAssistantCamera;
+
     [SerializeField] float hitPauseDuration = .1f;
 
     [SerializeField] AnimationCurve stopLengthCurve;
@@ -80,6 +82,11 @@ public class GameBallScript : MonoBehaviour
 
         // Turns the camera in the direction the player should go
         cam.SetCameraOrientation(currentCheckpoint.GetCameraXYRotation());
+
+        // Corrects Rotation Assistant Camera
+        if (rotationAssistantCamera) {
+            rotationAssistantCamera.SetCameraOrientation(currentCheckpoint.GetCameraXYRotation().y);
+        }
 
         // Unlocks the position after a delay
         Invoke("UnlockHorizontalPosition", .7f);
