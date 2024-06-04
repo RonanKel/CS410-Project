@@ -6,14 +6,13 @@ public class Checkpoint : MonoBehaviour
 {
     [SerializeField] bool isLevelCheckpoint = false;
     [SerializeField] Vector2 xYRotation = new Vector2(15f, 0f);
+    [SerializeField] Vector3 worldRotationEuler = new Vector3(0f, 0f, 0f);  // Desired world rotation at this checkpoint
 
     private Quaternion spawnRotation = new Quaternion(0f, 0f, 0f, 0f);
-
     private GameBallScript gB;
     private CameraFollowGB cam;
+    private World world;
 
-    // Start is called before the first frame update
-    // Sets the spawn rotation to the opposite of the current rotation
     void Awake()
     {
         Vector3 eulerAngles = transform.localRotation.eulerAngles;
@@ -24,16 +23,15 @@ public class Checkpoint : MonoBehaviour
     {
         gB = GameObject.Find("GameBall").GetComponent<GameBallScript>();
         cam = GameObject.Find("Main Camera").GetComponent<CameraFollowGB>();
+        world = GameObject.Find("World").GetComponent<World>();
     }
-    // When the player enters the checkpoint, the player's current checkpoint is set to this checkpoint
+
     void OnTriggerEnter(Collider col) {
         if (col.transform.CompareTag("Player")) {
             if (isLevelCheckpoint) {
                 gB.SetLevelCheckpoint(this);
-                //col.transform.GetComponent<GameBallScript>().SetLevelCheckpoint(this);
             }
             gB.SetCurrentCheckpoint(this);
-            //col.transform.GetComponent<GameBallScript>().SetCurrentCheckpoint(this);
         }
     }
 
@@ -41,11 +39,10 @@ public class Checkpoint : MonoBehaviour
         return xYRotation;
     }
 
-    // Returns the position of the spawn point
     public Vector3 GetSpawnPosition() {
         return transform.GetChild(0).position;
     }
-    // Returns the rotation of the spawn point
+
     public Quaternion GetSpawnRotation() {
         return spawnRotation;
     }
