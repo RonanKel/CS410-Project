@@ -6,6 +6,7 @@ public class RotationAssistant : MonoBehaviour
 {
 
     private Transform world;
+    public bool activity = true;
 
     // Start is called before the first frame update
     void Start()
