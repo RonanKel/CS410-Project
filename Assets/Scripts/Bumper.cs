@@ -7,6 +7,13 @@ public class Bumper : MonoBehaviour
     [SerializeField] float bounceAmount = 300f;
     [SerializeField] ParticleSystem feedbackParticle;
     [SerializeField] AudioSource feedbackAudio;
+    [SerializeField] float rotationSpeed = 0f; // Rotation speed in degrees per second
+
+    private void Update()
+    {
+        // Continuously rotate the bumper based on rotationSpeed
+        transform.Rotate(0f, 0f, rotationSpeed * Time.deltaTime);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
