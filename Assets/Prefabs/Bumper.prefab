@@ -44,7 +44,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: af4305f3327b64044a4171f143c57c7e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5141,3 +5141,4 @@ MonoBehaviour:
   bounceAmount: 20000
   feedbackParticle: {fileID: 4213804649707562865}
   feedbackAudio: {fileID: 7892752063930897239}
+  rotationSpeed: 0
