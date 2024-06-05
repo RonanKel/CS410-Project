@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     {
         pauseMenu = GameObject.Find("Pause Menu") ? GameObject.Find("Pause Menu") : null;
         scoreboard = GameObject.Find("Scoreboard") ? GameObject.Find("Scoreboard") : null;
+        Debug.Log(pauseMenu.name);
 
         // Lock the cursor when the game is running
         Cursor.lockState = CursorLockMode.Locked;
