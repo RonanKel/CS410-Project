@@ -6,23 +6,20 @@ public class VictorySound : MonoBehaviour
 {
     [SerializeField] ParticleSystem feedbackParticle;
     [SerializeField] AudioSource feedbackAudio;
-    bool played;
-   
+    [SerializeField] bool played = false;
 
-    void Start ()
-    {
-        played = false;
-    }
     private void OnTriggerEnter(Collider other)
     {
-        if(feedbackParticle != null)
-        {
-            feedbackParticle.Play();
-        }
-        if(feedbackAudio !=null && !played)
-        {
-        feedbackAudio.Play();
-        played = true;
+        if (!played) {
+            if (feedbackParticle != null)
+            {
+                feedbackParticle.Play();
+            }
+            if (feedbackAudio != null)
+            {
+                feedbackAudio.Play();
+            }
+            played = true;
         }
     }
 }
