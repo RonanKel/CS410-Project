@@ -12615,6 +12615,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1973131361}
+    - target: {fileID: 5855853795884169361, guid: 88b32653a16e24d188658e1e8c74a811, type: 3}
+      propertyPath: played
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6280721446996195726, guid: 88b32653a16e24d188658e1e8c74a811, type: 3}
       propertyPath: xYRotation.x
       value: 0
