@@ -19966,6 +19966,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EndZone
       objectReference: {fileID: 0}
+    - target: {fileID: 1885271871336911468, guid: a9c335a1012764860858472a4461e799, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d262d40918eb9614e8f21119e11eadf8, type: 2}
     - target: {fileID: 6797400617981632771, guid: a9c335a1012764860858472a4461e799, type: 3}
       propertyPath: player
       value: 
