@@ -1228,7 +1228,7 @@ GameObject:
   - component: {fileID: 194020209028301573}
   - component: {fileID: 3047330354975816553}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Timer and Win Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
